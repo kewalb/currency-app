@@ -1,4 +1,4 @@
 export const environment = {
     production: true,
-    apiBaseUrl: 'http://localhost:3000/',
+    apiBaseUrl: 'https://currency-backend-p4trcqm74a-uc.a.run.app/',
   };
