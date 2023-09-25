@@ -1,0 +1,46 @@
+<div class="jumbotron">
+    <h1 class="display-4 text-center">Compare Currencies</h1>
+    <p class="text-center">The chart shows currency comparision for the last 365 dates.</p>
+    <hr class="my-4" />
+  
+    <div class="row text-center">
+      <div class="col">
+        <div class="form-group">
+          <label for="dropdown">Select currency:</label>
+          <select
+            class="form-control dropdown"
+            id="dropdown"
+            [(ngModel)]="fromCurrency"
+          >
+          <option *ngFor="let option of currencyKeys" [value]="option" class="dropdown-item">{{ option }}</option>
+          </select>
+        </div>
+      </div>
+      <div class="col">
+          <div class="form-group">
+          <label for="dropdown">Select Currency:</label>
+          <select
+            class="form-control dropdown"
+            id="dropdown"
+            [(ngModel)]="toCurrency"
+          >
+          <option *ngFor="let option of currencyKeys" [value]="option" class="dropdown-item">{{ option }}</option>
+          </select>
+        </div>
+     
+      </div>
+      <div class="row my-4">
+        <div class="col">
+            <button class="btn btn-success" (click)="fetchHistoricData()">Compare</button>
+        </div>
+        <div class="row my-3" *ngIf="showChart">
+            <div style="display: block">
+                <canvas baseChart
+                        [datasets]="lineChartData"
+                        [labels]="lineChartLabels"
+                        [options]="lineChartOptions"
+                        [legend]="lineChartLegend"
+                        [type]="lineChartType"></canvas>
+              </div>
+        </div>
+      </div>

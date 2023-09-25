@@ -1,0 +1,58 @@
+<div class="jumbotron">
+  <h1 class="display-4 text-center">Exchange Rates</h1>
+  <hr class="my-4" />
+
+  <div class="row text-center">
+    <div class="col">
+      <div class="form-group">
+        <label for="dropdown">Select From Currency:</label>
+        <select
+          class="form-control dropdown"
+          id="dropdown"
+          [(ngModel)]="fromCurrency"
+        >
+        <option *ngFor="let option of currencyKeys" [value]="option" class="dropdown-item">{{ option }}</option>
+        </select>
+      </div>
+    </div>
+    <div class="col">
+        <div class="form-group">
+        <label for="dropdown">Select To Currency:</label>
+        <select
+          class="form-control dropdown"
+          id="dropdown"
+          [(ngModel)]="toCurrency"
+        >
+        <option *ngFor="let option of currencyKeys" [value]="option" class="dropdown-item">{{ option }}</option>
+        </select>
+      </div>
+   
+    </div>
+    <div class="row">
+        <div class="col align-self-start col-6 my-4">
+            <label for="input">Enter value for above currency:</label>
+            <div class="input-group">
+                
+                <input
+                  type="number"
+                  min="0"
+                  class="form-control"
+                  placeholder="Enter value"
+                  [(ngModel)]="value"
+                />
+                <span class="input-group-text" *ngIf="fromCurrency">{{ fromCurrency }}</span>
+              </div>
+              
+        </div>
+        <div class="col col-4 my-5" *ngIf="exchangeValue">
+            <h2> {{ exchangeValue + " " +toCurrency }}</h2>
+          </div>
+      
+    </div>
+    <div class="row">
+        <div class="col">
+            <button class="btn btn-success" (click)="fetchPrice()">Exchange</button>
+        </div>
+    </div>
+  </div>
+
